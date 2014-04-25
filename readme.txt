@@ -3,7 +3,7 @@ Contributors: flarelabs, dkadmin233
 Donate link: http://www.ecommerceanalyticsconnect.com/donate
 Tags: analytics, google analytics, ecommerce, infusionsoft
 Requires at least: 3.3
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 1.0.2
 
 Easily add Analytics Connect functionality to WordPress.
