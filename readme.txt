@@ -3,8 +3,8 @@ Contributors: flarelabs, dkadmin233
 Donate link: http://www.ecommerceanalyticsconnect.com/donate
 Tags: analytics, google analytics, ecommerce, infusionsoft
 Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 1.0.2
+Tested up to: 3.9.1
+Stable tag: 1.0.3
 
 Easily add Analytics Connect functionality to WordPress.
 
@@ -35,6 +35,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 Yes.
 
 == Changelog ==
+
+= 1.0.3 (2014-05-12) =
+* Added link for Premium Support
 
 = 1.0.2 (2014-04-07) =
 * Removed unused public function new_key_from_file()

@@ -3,7 +3,7 @@
 Plugin Name: Analytics Connect - Google Analytics Ecommerce for Infusionsoft
 Plugin URI: http://ecommerceanalyticsconnect.com/wordpress/
 Description: The official Analytics Connect plugin for WordPress.
-Version: 1.0.2
+Version: 1.0.3
 Author: Analytics Connect
 Author URI: http://www.ecommerceanalyticsconnect.com/
 */
@@ -48,11 +48,14 @@ class WP_Analytics_Connect {
         }
 
         /*
-         * Modify the $links array to add a 'Settings' link.
+         * Modify the $links array to add the 'Settings' and 'Premium Support' links.
          */
         public function add_settings_action_link($links) {
             $links = isset($links) ? $links : array();
-            $links["_ac_settings"] = '<a href="options-general.php?page='.$this->admin_page_id.'">Settings</a>';
+            $settings_link = '<a href="options-general.php?page='.$this->admin_page_id.'">Settings</a>'; 
+            array_unshift($links, $settings_link);
+            $premium_support_link = '<a href="http://www.ecommerceanalyticsconnect.com/premium-support.php?utm_source=ac-wordpress-plugin&utm_medium=text-link&utm_campaign=premium-support-link">Premium Support</a>'; 
+            array_unshift($links, $premium_support_link);
             return $links;
         }
 
