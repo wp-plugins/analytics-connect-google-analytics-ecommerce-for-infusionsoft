@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.0');  //  Use same as listed above
+define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.1');  //  Use same as listed above
 define('ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME', 'AnalyticsConnect.io');  //  Used for display to users
 define('ANALYTICS_CONNECT_IO_POST_URL', 'https://analyticsconnect.io/app/request/index.php');  //  Main Servers: Processing URL
 define('ANALYTICS_CONNECT_IO_CALLBACK_URL', 'https://analyticsconnect.io/app/callback/wordpress.php');  //  Main Servers: Callback URL
