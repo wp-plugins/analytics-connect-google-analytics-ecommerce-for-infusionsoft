@@ -1,28 +1,27 @@
-=== Analytics Connect - Google Analytics Ecommerce for Infusionsoft ===
-Contributors: flarelabs, dkadmin233
-Donate link: http://www.ecommerceanalyticsconnect.com/donate
-Tags: analytics, google analytics, ecommerce, infusionsoft
-Requires at least: 3.3
-Tested up to: 3.9.1
-Stable tag: 1.0.3
+=== AnalyticsConnect.io - Google Analytics Ecommerce for Infusionsoft ===
+Contributors: dkadmin233
+Tags: analytics, google analytics, ecommerce, infusionsoft, adwords conversion tracking, facebook conversion tracking
+Requires at least: 3.5.1
+Tested up to: 4.0
+Stable tag: 2.0.0
 
 Easily add Analytics Connect functionality to WordPress.
 
 == Description ==
 
-Analytics Connect is the easy solution to getting Infusionsoft sales data into Google Analytics and AdWords.  This plugin makes installing Analytics Connect to your WordPress site fast and easy.
+AnalyticsConnect.io is the easy solution for getting your Infusionsoft sales data into Google Analytics Ecommerce, Google AdWords, and Facebook Conversion Tracking.  This plugin makes installing AnalyticsConnect.io to your WordPress site fast and easy.
 
 == Installation ==
 
 You can either install it automatically from the WordPress admin, or do it manually:
 
-1. Unzip the archive and upload the "analytics-connect" folder to the "/wp-content/plugins/" directory.
+1. Unzip the archive and upload the "analyticsconnect-io" folder to the "/wp-content/plugins/" directory.
 2. Activate the plugin from the Plugins menu.
-3. Go to the "Settings" menu and type in your Analytics Connect Key.
+3. Go to the "Settings" menu and type in your AnalyticsConnect.io Key.
 
 = Usage =
 
-1. Place the "[analytics_connect]" shortcode on all thank-you pages.
+1. Place the "[analyticsconnect-io]" shortcode on all thank-you pages.
 
 == Screenshots ==
 
@@ -30,11 +29,18 @@ You can either install it automatically from the WordPress admin, or do it manua
 
 == Frequently Asked Questions ==
 
-= Will this work with Universal Analytics? =
+= What version of Google Analytics is this for? =
 
-Yes.
+This is built for Google's newest system: Google Universal Analytics running Enhanced Ecommerce. If you're running an older version, you'll need to upgrade before using our software.
 
 == Changelog ==
+
+= 2.0.0 (2014-10-29) =
+* Plugin code rebuilt from the ground up for the new AnalyticsConnect.io system (version 2 of our software).
+* All PHP solution (no Javascript) for better reliability.
+* Using OAuth2 for the connection to Infusionsoft (no need to update our settings if you change your Infusionsoft password).
+* Infusionsoft Promo Code written to Google Analytics as part of the order data.
+* Added support for Facebook Conversion Tracking.
 
 = 1.0.3 (2014-05-12) =
 * Added link for Premium Support
