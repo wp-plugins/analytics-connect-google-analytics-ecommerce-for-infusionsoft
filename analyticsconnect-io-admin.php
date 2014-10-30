@@ -13,7 +13,7 @@ function analyticsconnectio_admin_add_page() {
 //  CSS for the Admin
 add_action( 'admin_enqueue_scripts', 'analyticsconnectio_add_stylesheet_to_admin' );
 function analyticsconnectio_add_stylesheet_to_admin() {
-	wp_enqueue_style( 'analyticsconnectio-admin-style', plugins_url() . '/analyticsconnect-io/analyticsconnect-io-admin-style.css');
+	wp_enqueue_style( 'analyticsconnectio-admin-style', plugins_url() . '/analytics-connect-google-analytics-ecommerce-for-infusionsoft/analyticsconnect-io-admin-style.css');
 }
 
 
