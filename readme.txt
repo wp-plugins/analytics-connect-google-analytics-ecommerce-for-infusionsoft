@@ -5,7 +5,7 @@ Requires at least: 3.5.1
 Tested up to: 4.0
 Stable tag: 2.0.0
 
-Easily add Analytics Connect functionality to WordPress.
+Easily add AnalyticsConnect.io functionality to WordPress.
 
 == Description ==
 
