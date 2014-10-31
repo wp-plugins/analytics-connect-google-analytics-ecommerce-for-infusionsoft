@@ -4,7 +4,7 @@
 Plugin Name: AnalyticsConnect.io - Google Analytics Ecommerce for Infusionsoft
 Plugin URI: http://analyticsconnect.io/kb/wordpress.php
 Description: The official AnalyticsConnect.io plugin for WordPress.
-Version: 2.0.1
+Version: 2.0.2
 Requires at least: 3.5.1
 Author: AnalyticsConnect.io
 Author URI: http://analyticsconnect.io
@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.1');  //  Use same as listed above
+define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.2');  //  Use same as listed above
 define('ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME', 'AnalyticsConnect.io');  //  Used for display to users
 define('ANALYTICS_CONNECT_IO_POST_URL', 'https://analyticsconnect.io/app/request/index.php');  //  Main Servers: Processing URL
 define('ANALYTICS_CONNECT_IO_CALLBACK_URL', 'https://analyticsconnect.io/app/callback/wordpress.php');  //  Main Servers: Callback URL
@@ -47,17 +47,23 @@ function analyticsconnectio_shortcode() {
 	
 	//  Let's see if we can pull an OrderID
 	
-	if (isset($_GET['orderid'])) {  //  We have OrderID as a GET var
-		$orderId = $_GET['orderid'];
-	} else if (isset($_POST['orderid'])) {
-		$orderId = $_POST['orderid'];  //  We have OrderID as a POST var (used by developers of other plugins)
-	} else {
-		return '<!-- ' . ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME . ' - ERROR (local): No orderid available! -->';  //  Just give up
+	if (isset($_POST)) {  //  Look for OrderID as a POST var (used by developers of other plugins)
+		foreach ($_POST as $var => $value) {
+			if (strtolower($var)=='orderid') {
+				$orderId = $value;
+			}
+		}
 	}
-	
-	//  Work with the OrderID we were given
-	
-	if ($orderId != FALSE) {  //  If we have an orderid
+	if (isset($_GET)) {  //  Look for OrderID as a GET var
+		foreach ($_GET as $var => $value) {
+			if (strtolower($var)=='orderid') {
+				$orderId = $value;
+			}
+		}
+	}
+	if ($orderId == FALSE) {  //  No OrderID found
+		return '<!-- ' . ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME . ' - ERROR (local): No OrderID available! -->';  //  Just give up
+	} else {  //  We have an OrderID
 		
 		$options = get_option('analyticsconnectio_options');  //  Pull info from WP database
 		
