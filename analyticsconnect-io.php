@@ -4,7 +4,7 @@
 Plugin Name: AnalyticsConnect.io - Google Analytics Ecommerce for Infusionsoft
 Plugin URI: http://analyticsconnect.io/kb/wordpress.php
 Description: The official AnalyticsConnect.io plugin for WordPress.
-Version: 2.0.2
+Version: 2.0.3
 Requires at least: 3.5.1
 Author: AnalyticsConnect.io
 Author URI: http://analyticsconnect.io
@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.2');  //  Use same as listed above
+define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.3');  //  Use same as listed above
 define('ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME', 'AnalyticsConnect.io');  //  Used for display to users
 define('ANALYTICS_CONNECT_IO_POST_URL', 'https://analyticsconnect.io/app/request/index.php');  //  Main Servers: Processing URL
 define('ANALYTICS_CONNECT_IO_CALLBACK_URL', 'https://analyticsconnect.io/app/callback/wordpress.php');  //  Main Servers: Callback URL

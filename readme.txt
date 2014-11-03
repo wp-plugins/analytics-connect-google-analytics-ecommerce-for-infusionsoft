@@ -3,7 +3,7 @@ Contributors: dkadmin233
 Tags: analytics, google analytics, ecommerce, infusionsoft, adwords conversion tracking, facebook conversion tracking
 Requires at least: 3.5.1
 Tested up to: 4.0
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 
 Easily add AnalyticsConnect.io functionality to WordPress.
 
@@ -34,6 +34,9 @@ You can either install it automatically from the WordPress admin, or do it manua
 This is built for Google's newest system: Google Universal Analytics running Enhanced Ecommerce. If you're running an older version, you'll need to upgrade before using our software.
 
 == Changelog ==
+
+= 2.0.3 (2014-11-02) =
+* Updated the look of the status dashboard.
 
 = 2.0.2 (2014-10-31) =
 * Reading POST and GET vars for OrderID is now case insensitive.
