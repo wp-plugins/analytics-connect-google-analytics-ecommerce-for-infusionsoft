@@ -4,7 +4,7 @@
 Plugin Name: AnalyticsConnect.io - Google Analytics Ecommerce for Infusionsoft
 Plugin URI: http://analyticsconnect.io/kb/wordpress.php
 Description: The official AnalyticsConnect.io plugin for WordPress.
-Version: 2.0.3
+Version: 2.1.0
 Requires at least: 3.5.1
 Author: AnalyticsConnect.io
 Author URI: http://analyticsconnect.io
@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.0.3');  //  Use same as listed above
+define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.1.0');  //  Use same as listed above
 define('ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME', 'AnalyticsConnect.io');  //  Used for display to users
 define('ANALYTICS_CONNECT_IO_POST_URL', 'https://analyticsconnect.io/app/request/index.php');  //  Main Servers: Processing URL
 define('ANALYTICS_CONNECT_IO_CALLBACK_URL', 'https://analyticsconnect.io/app/callback/wordpress.php');  //  Main Servers: Callback URL
@@ -41,7 +41,7 @@ include( plugin_dir_path( __FILE__ ) . 'analyticsconnect-io-admin.php');
 
 //  If the shortcode is on the page we've got some work to do
 add_shortcode('analyticsconnect-io', 'analyticsconnectio_shortcode');
-function analyticsconnectio_shortcode() {
+function analyticsconnectio_shortcode($atts) {
 	
 	$orderId = FALSE;
 	
@@ -78,6 +78,16 @@ function analyticsconnectio_shortcode() {
 				orderid => $orderId,
 				cid => $cid
 			);
+			
+			// API
+			if ($atts != '') {  //  Attributes have been added to the shortcode
+				$curlPostData[api] = 'true';
+				if (isset($atts[gaua])) { $curlPostData[gaua] = $atts[gaua]; }
+				if (isset($atts[awconid])) { $curlPostData[awconid] = $atts[awconid]; }
+				if (isset($atts[awconlabel])) { $curlPostData[awconlabel] = $atts[awconlabel]; }
+				if (isset($atts[fbconpixelid])) { $curlPostData[fbconpixelid] = $atts[fbconpixelid]; }
+			}
+			
 			$curlPostBody = http_build_query($curlPostData);
 			$curl = curl_init();
 			curl_setopt_array($curl, array(

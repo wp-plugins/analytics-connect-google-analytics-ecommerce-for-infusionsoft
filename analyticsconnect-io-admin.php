@@ -32,7 +32,8 @@ function analyticsconnectio_options_page() {
 <p>If you need a key, please visit our <a href="https://analyticsconnect.io?utm_source=ac-wordpress-plugin&utm_medium=text-link&utm_campaign=internal-wordpress-link">website</a> to sign up.</p>
 <p>Insert the shortcode [analyticsconnect-io] on your thank-you page.</p>
 <p>Make sure that the "orderid" variable is being passed to the thank-you page containing the shortcode.</p>
-<p>See our <a href="https://analyticsconnect.io/app/user/installation-troubleshooting-guide.php?utm_source=ac-wordpress-plugin&utm_medium=text-link&utm_campaign=internal-wordpress-link">Installation and Troubleshooting Guide</a> for additional information. </p>
+<p>See our <a href="https://analyticsconnect.io/app/user/installation-troubleshooting-guide.php?utm_source=ac-wordpress-plugin&utm_medium=text-link&utm_campaign=internal-wordpress-link">Installation and Troubleshooting Guide</a> for additional information.</p>
+<p>For advanced configuration options, see our <a href="https://analyticsconnect.io/kb/api.php?utm_source=ac-wordpress-plugin&utm_medium=text-link&utm_campaign=internal-wordpress-link">API Documentation</a>.</p>
 <p> &nbsp; </p>
 <h3>Status</h3>
 <table>
@@ -67,8 +68,8 @@ function analyticsconnectio_admin_init(){
 	register_setting( 'analyticsconnectio_options', 'analyticsconnectio_options', 'analyticsconnectio_options_validate' );
 	add_settings_section('analyticsconnectio_key', 'Authentication', 'analyticsconnectio_section_authentication_settings_text', 'analyticsconnectio');
 	add_settings_field('analyticsconnectio_secret_key', 'Secret Key', 'analyticsconnectio_key_setting_string', 'analyticsconnectio', 'analyticsconnectio_key');
-	add_settings_section('analyticsconnectio_show_gacode', 'Google Analytics', 'analyticsconnectio_section_gacode_settings_text', 'analyticsconnectio');
-	add_settings_field('analyticsconnectio_gacode', 'Enable Google Analytics', 'analyticsconnectio_gacode_setting_string', 'analyticsconnectio', 'analyticsconnectio_show_gacode');
+	add_settings_section('analyticsconnectio_show_gacode', 'Google Analytics Tracking Code (Optional)', 'analyticsconnectio_section_gacode_settings_text', 'analyticsconnectio');
+	add_settings_field('analyticsconnectio_gacode', 'Write Google Analytics Tracking Code', 'analyticsconnectio_gacode_setting_string', 'analyticsconnectio', 'analyticsconnectio_show_gacode');
 }
 
 
