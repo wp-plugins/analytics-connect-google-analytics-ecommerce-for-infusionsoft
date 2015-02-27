@@ -4,7 +4,7 @@
 Plugin Name: AnalyticsConnect.io - Google Analytics Ecommerce for Infusionsoft
 Plugin URI: http://analyticsconnect.io/kb/wordpress.php
 Description: The official AnalyticsConnect.io plugin for WordPress.
-Version: 2.1.0
+Version: 2.1.1
 Requires at least: 3.5.1
 Author: AnalyticsConnect.io
 Author URI: http://analyticsconnect.io
@@ -28,7 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 
-define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.1.0');  //  Use same as listed above
+define('ANALYTICS_CONNECT_IO_SOFTWARE_VERSION', '2.1.1');  //  Use same as listed above
 define('ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME', 'AnalyticsConnect.io');  //  Used for display to users
 define('ANALYTICS_CONNECT_IO_POST_URL', 'https://analyticsconnect.io/app/request/index.php');  //  Main Servers: Processing URL
 define('ANALYTICS_CONNECT_IO_CALLBACK_URL', 'https://analyticsconnect.io/app/callback/wordpress.php');  //  Main Servers: Callback URL
@@ -74,18 +74,18 @@ function analyticsconnectio_shortcode($atts) {
 			if ($cid == FALSE) { $cid = analyticsconnectio_gen_uuid(); }
 			
 			$curlPostData = array(
-				secretkey => $options['secret_key'],
-				orderid => $orderId,
-				cid => $cid
+				'secretkey' => $options['secret_key'],
+				'orderid' => $orderId,
+				'cid' => $cid
 			);
 			
 			// API
 			if ($atts != '') {  //  Attributes have been added to the shortcode
-				$curlPostData[api] = 'true';
-				if (isset($atts[gaua])) { $curlPostData[gaua] = $atts[gaua]; }
-				if (isset($atts[awconid])) { $curlPostData[awconid] = $atts[awconid]; }
-				if (isset($atts[awconlabel])) { $curlPostData[awconlabel] = $atts[awconlabel]; }
-				if (isset($atts[fbconpixelid])) { $curlPostData[fbconpixelid] = $atts[fbconpixelid]; }
+				$curlPostData['api'] = 'true';
+				if (isset($atts['gaua'])) { $curlPostData['gaua'] = $atts['gaua']; }
+				if (isset($atts['awconid'])) { $curlPostData['awconid'] = $atts['awconid']; }
+				if (isset($atts['awconlabel'])) { $curlPostData['awconlabel'] = $atts['awconlabel']; }
+				if (isset($atts['fbconpixelid'])) { $curlPostData['fbconpixelid'] = $atts['fbconpixelid']; }
 			}
 			
 			$curlPostBody = http_build_query($curlPostData);
@@ -104,20 +104,20 @@ function analyticsconnectio_shortcode($atts) {
 			
 			//  Process the result data
 			
-			if ($data[error] == '') {  //  No errors reported back from the servers
+			if ($data['error'] == '') {  //  No errors reported back from the servers
 				
 				$htmlCode = '
 				
 	<!-- ' . ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME . ' WordPress Plugin v' . ANALYTICS_CONNECT_IO_SOFTWARE_VERSION . ' -->
-	' . $data[googleanalytics] . '
-	' . $data[adwords] . '
-	' . $data[facebook] . '
+	' . $data['googleanalytics'] . '
+	' . $data['adwords'] . '
+	' . $data['facebook'] . '
 	';
 				return $htmlCode;
 				
 			} else {  //  Something went wrong
 			
-				return $data[error];
+				return $data['error'];
 				
 			}
 			
@@ -135,9 +135,13 @@ function analyticsconnectio_shortcode($atts) {
 
 //  Get the user's Google Cookie ID
 function analyticsconnectio_get_user_ga_cookie_id() {
-	if (isset($_COOKIE["_ga"])){  //  Get the GA cookie
-		list($version, $domainDepth, $cid1, $cid2) = split('[\.]', $_COOKIE["_ga"],4);
-		$cid = $cid1.'.'.$cid2;
+	if (isset($_COOKIE['_ga'])){  //  Get the GA cookie
+		$cookiePieces = explode('.', $_COOKIE['_ga']);
+		$version = $cookiePieces[0];
+		$domainDepth = $cookiePieces[1];
+		$cid1 = $cookiePieces[2];
+		$cid2 = $cookiePieces[3];
+		$cid = $cid1 . '.' . $cid2;
 		return $cid;
 	} else {
 		return FALSE;

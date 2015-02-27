@@ -39,15 +39,15 @@ function analyticsconnectio_options_page() {
 <table>
 	<tr>
 		<td><p><b>Connection to <?php echo ANALYTICS_CONNECT_IO_APP_DISPLAY_NAME; ?>:</b></p></td>
-		<td><p><?php echo $displayUserData[status]; ?></p></td>
+		<td><p><?php echo $displayUserData['status']; ?></p></td>
 	</tr>
 	<tr>
 		<td><p><b>Connection to Infusionsoft:</b></p></td>
-		<td><p><?php echo $displayUserData[infappname]; ?></p></td>
+		<td><p><?php echo $displayUserData['infappname']; ?></p></td>
 	</tr>
 	<tr>
 		<td><p><b>Google Analytics Tracking ID:</b></p></td>
-		<td><p><?php echo $displayUserData[gaua]; ?></p></td>
+		<td><p><?php echo $displayUserData['gaua']; ?></p></td>
 	</tr>
 </table>
 <p> &nbsp; </p>
@@ -164,7 +164,7 @@ function analyticsconnectio_get_user_data(){
 	if (preg_match('/^[a-z0-9]{24}$/i', $options['secret_key'])) {  //  Only run if Secret Key has a valid format
 	
 		$curlPostData = array(
-			secretkey => $options['secret_key']
+			'secretkey' => $options['secret_key']
 		);
 		$curlPostBody = http_build_query($curlPostData);
 		$curl = curl_init();
@@ -201,70 +201,70 @@ function analyticsconnectio_get_displayable_user_data() {
 	
 	if ($rawData == FALSE) {  //  We don't have any data because WordPress either doesn't have a key or the key has an invalid format
 	
-		$showData[status] = '<span class="analyticsconnectio-warning">(Connection Error) Status Unknown</span>';
+		$showData['status'] = '<span class="analyticsconnectio-warning">(Connection Error) Status Unknown</span>';
 		
 		if (strlen($options['infappname']) > 2) {
-			$showData[infappname] = '<span class="analyticsconnectio-warning">(Connection Error) Application ' . $options['infappname'] . '</span>';
+			$showData['infappname'] = '<span class="analyticsconnectio-warning">(Connection Error) Application ' . $options['infappname'] . '</span>';
 		} else {
-			$showData[infappname] = '<span class="analyticsconnectio-warning">(Connection Error) Application Unknown</span>';
+			$showData['infappname'] = '<span class="analyticsconnectio-warning">(Connection Error) Application Unknown</span>';
 		}
 		
 		if (strlen($options['gaua']) > 2) {
-			$showData[gaua] = '<span class="analyticsconnectio-warning">(Connection Error) Currently set to ' . $options['gaua'] . '</span>';
+			$showData['gaua'] = '<span class="analyticsconnectio-warning">(Connection Error) Currently set to ' . $options['gaua'] . '</span>';
 		} else {
-			$showData[gaua] = '<span class="analyticsconnectio-warning">(Connection Error) No Tracking ID currently set</span>';
+			$showData['gaua'] = '<span class="analyticsconnectio-warning">(Connection Error) No Tracking ID currently set</span>';
 		}
 			
 	}  else {  //  We got data back
 		
-		if ($rawData[status] == 'error') {  //  Key lookup failed on the server
+		if ($rawData['status'] == 'error') {  //  Key lookup failed on the server
 			
-			$showData[status] = '<span class="analyticsconnectio-failure">Secret Key Error</span>';
+			$showData['status'] = '<span class="analyticsconnectio-failure">Secret Key Error</span>';
 			
 			if (strlen($options['infappname']) > 2) {
-				$showData[infappname] = '<span class="analyticsconnectio-warning">(Connection Error) Application ' . $options['infappname'] . '</span>';
+				$showData['infappname'] = '<span class="analyticsconnectio-warning">(Connection Error) Application ' . $options['infappname'] . '</span>';
 			} else {
-				$showData[infappname] = '<span class="analyticsconnectio-warning">(Connection Error) Application Unknown</span>';
+				$showData['infappname'] = '<span class="analyticsconnectio-warning">(Connection Error) Application Unknown</span>';
 			}
 			
 			if (strlen($options['gaua']) > 2) {
-				$showData[gaua] = '<span class="analyticsconnectio-warning">(Connection Error) Currently set to ' . $options['gaua'] . '</span>';
+				$showData['gaua'] = '<span class="analyticsconnectio-warning">(Connection Error) Currently set to ' . $options['gaua'] . '</span>';
 			} else {
-				$showData[gaua] = '<span class="analyticsconnectio-warning">(Connection Error) No Tracking ID currently set</span>';
+				$showData['gaua'] = '<span class="analyticsconnectio-warning">(Connection Error) No Tracking ID currently set</span>';
 			}
 
 		} else {  //  We got good data back
 		
-			if ($rawData[status] == 'active') { $showData[status] = '<span class="analyticsconnectio-okay">Active</span>'; } else
-			if ($rawData[status] == 'trialing') { $showData[status] = '<span class="analyticsconnectio-okay">Active (Free Trial)</span>'; } else
-			if ($rawData[status] == 'past_due') { $showData[status] = '<span class="analyticsconnectio-warning">Active (Your payment is past due!)</span>'; } else
-			if ($rawData[status] == 'canceled') { $showData[status] = '<span class="analyticsconnectio-failure">Account Canceled</span>'; }
+			if ($rawData['status'] == 'active') { $showData['status'] = '<span class="analyticsconnectio-okay">Active</span>'; } else
+			if ($rawData['status'] == 'trialing') { $showData['status'] = '<span class="analyticsconnectio-okay">Active (Free Trial)</span>'; } else
+			if ($rawData['status'] == 'past_due') { $showData['status'] = '<span class="analyticsconnectio-warning">Active (Your payment is past due!)</span>'; } else
+			if ($rawData['status'] == 'canceled') { $showData['status'] = '<span class="analyticsconnectio-failure">Account Canceled</span>'; }
 			
-			if ($rawData[infappname] == NULL) {
+			if ($rawData['infappname'] == NULL) {
 				if (strlen($options['infappname']) > 2) {
-					$showData[infappname] = '<span class="analyticsconnectio-warning">(Connection Error) Application ' . $options['infappname'] . '</span>';
+					$showData['infappname'] = '<span class="analyticsconnectio-warning">(Connection Error) Application ' . $options['infappname'] . '</span>';
 				} else {
-					$showData[infappname] = '<span class="analyticsconnectio-warning">(Connection Error) Application Unknown</span>';
+					$showData['infappname'] = '<span class="analyticsconnectio-warning">(Connection Error) Application Unknown</span>';
 				}
 			} else {
-				$showData[infappname] = '<span class="analyticsconnectio-okay">Application ' . $rawData[infappname] . '</span>';
-				//  SAVE $rawData[infappname] to WP DB
+				$showData['infappname'] = '<span class="analyticsconnectio-okay">Application ' . $rawData['infappname'] . '</span>';
+				//  SAVE $rawData['infappname'] to WP DB
 				$options = get_option('analyticsconnectio_options');  //  Pull info from WP database
-				$options['infappname'] = $rawData[infappname];
+				$options['infappname'] = $rawData['infappname'];
 				update_option('analyticsconnectio_options', $options);
 			}
 			
-			if ($rawData[gaua] == NULL) {
+			if ($rawData['gaua'] == NULL) {
 				if (strlen($options['gaua']) > 2) {
-					$showData[gaua] = '<span class="analyticsconnectio-warning">(Connection Error) Currently set to ' . $options['gaua'] . '</span>';
+					$showData['gaua'] = '<span class="analyticsconnectio-warning">(Connection Error) Currently set to ' . $options['gaua'] . '</span>';
 				} else {
-					$showData[gaua] = '<span class="analyticsconnectio-warning">(Connection Error) No Tracking ID currently set</span>';
+					$showData['gaua'] = '<span class="analyticsconnectio-warning">(Connection Error) No Tracking ID currently set</span>';
 				}
 			} else {
-				$showData[gaua] = '<span class="analyticsconnectio-okay">' . $rawData[gaua] . '</span>';
-				//  SAVE $rawData[gaua] to WP DB
+				$showData['gaua'] = '<span class="analyticsconnectio-okay">' . $rawData['gaua'] . '</span>';
+				//  SAVE $rawData['gaua'] to WP DB
 				$options = get_option('analyticsconnectio_options');  //  Pull info from WP database
-				$options['gaua'] = $rawData[gaua];
+				$options['gaua'] = $rawData['gaua'];
 				update_option('analyticsconnectio_options', $options);
 			}
 			
