@@ -2,7 +2,7 @@
 Contributors: dkadmin233
 Tags: analytics, google analytics, ecommerce, infusionsoft, adwords conversion tracking, facebook conversion tracking
 Requires at least: 3.5.1
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: 2.1.1
 
 Easily add AnalyticsConnect.io functionality to WordPress.
